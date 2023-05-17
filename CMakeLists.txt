@@ -73,7 +73,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 add_subdirectory(third_party/abseil-cpp)
 string(REPLACE " -w" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-set(AFLPP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/AFLplusplus/include)
+set(AFLPP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CollAFLplusplus/include)
 
 include_directories(${AFLPP_DIR})
 

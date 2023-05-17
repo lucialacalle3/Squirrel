@@ -40,7 +40,7 @@ def run(database, input_dir, output_dir=None, config_file=None, fuzzer=None):
   if not config_file:
     config_file = get_config_path(database)
   if not fuzzer:
-    fuzzer = f"{ROOTPATH}/AFLplusplus/afl-fuzz"
+    fuzzer = f"{ROOTPATH}/CollAFLplusplus/afl-fuzz"
   if not os.path.exists(config_file):
     print("Invalid path for config file")
   if not os.path.exists(fuzzer):

@@ -26,7 +26,7 @@ RUN git clone https://github.com/s3team/Squirrel.git && \
     cd Squirrel && git submodule update --init && \
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DSQLITE=ON && \
     cmake --build build -j && \
-    cd AFLplusplus/ && LLVM_CONFIG=llvm-config-14 make -j20
+    cd CollAFLplusplus/ && LLVM_CONFIG=llvm-config-14 make -j20
 
 ARG CFLAGS="-DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384"
 
@@ -34,8 +34,8 @@ RUN git clone https://github.com/sqlite/sqlite sqlite3/ && cd sqlite3 && mkdir b
 
 WORKDIR /home/sqlite3/bld
 
-ENV CC=/home/Squirrel/AFLplusplus/afl-cc
-ENV CXX=/home/Squirrel/AFLplusplus/afl-c++
+ENV CC=/home/Squirrel/CollAFLplusplus/afl-cc
+ENV CXX=/home/Squirrel/CollAFLplusplus/afl-c++
 RUN ../configure && make -j && make sqlite3.c
 
 RUN $CC $CFLAGS -I. -c \
