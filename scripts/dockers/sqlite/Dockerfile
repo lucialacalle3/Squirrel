@@ -22,7 +22,7 @@ RUN chmod +w /etc/sudoers && \
 USER dobigthing
 WORKDIR /home
 
-RUN git clone https://github.com/s3team/Squirrel.git && \
+RUN git clone git@github.com:lucialacalle3/Squirrel.git && \
     cd Squirrel && git submodule update --init && \
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DSQLITE=ON && \
     cmake --build build -j && \
@@ -48,4 +48,4 @@ RUN $CXX $CXXFLAGS \
    ./sqlite3.o -ldl -pthread
 
 WORKDIR /home/Squirrel/scripts/utils
-ENTRYPOINT python3 run.py sqlite ../../data/fuzz_root/input
+CMD python3 run.py sqlite ../../data/fuzz_root/input
